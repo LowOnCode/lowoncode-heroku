@@ -1,0 +1,21 @@
+{
+  "name": "lowoncode-heroku",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "npx nodemon index.js"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "tmp/*"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@lowoncode/runtime": "git+https://github.com/LowOnCode/runtime.git"
+  }
+}
