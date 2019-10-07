@@ -1,18 +1,19 @@
 const loc = require('@lowoncode/runtime')
 const fetch = require('node-fetch')
+const fs = require('fs')
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
 
 // Warning
-const defaultDesignUrl = "https://designs.lowoncode.com/hello/latest.json"
-if(!process.env.DESIGN) {
+const defaultDesignUrl = 'https://designs.lowoncode.com/hello/latest.json'
+if (!process.env.DESIGN) {
   console.warn(`Set the DESIGN env to a url, now defaulting to ${defaultDesignUrl}`)
 }
 
 // Get env
 const DESIGN = process.env.DESIGN || defaultDesignUrl
 const MONITOR = process.env.MONITOR || true
-const MONITOR_SECRET = process.env.MONITOR_SECRET || 'verysecret'
+// const MONITOR_SECRET = process.env.MONITOR_SECRET || 'verysecret'
 
 async function main () {
   // Create a runtime instance
@@ -31,9 +32,13 @@ async function main () {
   await runtime.run(design)
 
   // Start monitor on our design
-  if(MONITOR) { 
+  if (MONITOR) {
+    const logs = `${__dirname}/tmp`
+    // Make sure logs directory exist
+    fs.mkdirSync(logs)
+
     await loc.start(runtime, {
-      logs: `${__dirname}/tmp`
+      logs
     })
   }
 }
