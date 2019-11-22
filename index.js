@@ -34,13 +34,19 @@ async function main () {
   // Start monitor on our design
   if (MONITOR) {
     const logs = `${__dirname}/tmp`
+
     // Make sure logs directory exist
-    fs.mkdirSync(logs)
+    if (!fs.existsSync(logs)) {
+      fs.mkdirSync(logs)
+    }
 
     await loc.start(runtime, {
       logs
     })
   }
+
+  // The prize..
+  console.log(`Server live at : http://localhost:${process.env.PORT}`)
 }
 
 main()
