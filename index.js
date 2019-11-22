@@ -45,8 +45,8 @@ async function main () {
     })
   }
 
-  // The prize..
-  console.log(`Server live at : http://localhost:${process.env.PORT}`)
+  // The monitor is live at...
+  console.log(`Server live at : http://localhost:${process.env.PORT || 5000}/_system`)
 }
 
 main()
