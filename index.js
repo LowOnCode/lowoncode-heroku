@@ -34,6 +34,7 @@ async function main () {
   // Start monitor on our design, needed for design ui to connect to the app
   if (MONITOR) {
     const logs = `${__dirname}/tmp`
+
     // Make sure logs directory exist
     if (!fs.existsSync(logs)) {
       fs.mkdirSync(logs)
@@ -43,6 +44,9 @@ async function main () {
       logs
     })
   }
+
+  // The monitor is live at...
+  console.log(`Server live at : http://localhost:${process.env.PORT || 5000}/_system`)
 }
 
 main()
