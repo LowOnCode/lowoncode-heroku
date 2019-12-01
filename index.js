@@ -20,8 +20,8 @@ async function main () {
   const runtime = await loc.createRuntime()
 
   // Load my custom components
-  await runtime.addCoreComponents()
-  // await runtime.addComponents(`${__dirname}/components`)
+  // await runtime.addCoreComponents()
+  await runtime.addComponents(`${__dirname}/components`)
 
   // Load design file
   console.log(`Downloading design...${DESIGN}`)
