@@ -31,11 +31,13 @@ async function main () {
   // Start the engine
   await runtime.run(design)
 
-  // Start monitor on our design
+  // Start monitor on our design, needed for design ui to connect to the app
   if (MONITOR) {
     const logs = `${__dirname}/tmp`
     // Make sure logs directory exist
-    fs.mkdirSync(logs)
+    if (!fs.existsSync(logs)) {
+      fs.mkdirSync(logs)
+    }
 
     await loc.start(runtime, {
       logs
