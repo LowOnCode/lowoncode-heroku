@@ -2,10 +2,8 @@ const loc = require('@lowoncode/runtime')
 const fetch = require('node-fetch')
 const fs = require('fs')
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
-
 // Warning
-const defaultDesignUrl = 'https://designs.lowoncode.com/hello/latest.json'
+const defaultDesignUrl = 'https://lowoncode.com/designs/hello/latest.json'
 if (!process.env.DESIGN) {
   console.warn(`Set the DESIGN env to a url, now defaulting to ${defaultDesignUrl}`)
 }
