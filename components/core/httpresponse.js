@@ -14,18 +14,15 @@ module.exports = {
       type: `ctx`
     }],
   created ({ on }) {
-    on('data', (mixed, ctx) => {
-      if (isCtx(mixed)) {
-        mixed.body = mixed.body ? mixed.body : 'missing body'
-        // ctx.next()
-        return
+    on('data', async (message) => {
+      // Validation
+      if (!message.getContext) {
+        // Message to the void (IMPROVE)
+        return false
       }
-      // console.log('httpresponse', mixed)
-      // // console.log(mixed)
-      // // console.log(ctx)
-      // // ctx.body = 'cool'
 
-      ctx.body = mixed
+      const ctx = message.getContext()
+      ctx.body = message.value
       ctx.next()
     })
   }
