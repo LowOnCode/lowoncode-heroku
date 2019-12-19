@@ -7,7 +7,7 @@
     "env": {
         "DESIGN": {
           "description": "Url pointing to a lowoncode design",
-          "value": "https://designs.lowoncode.com/hello/latest.json"
+          "value": "https://lowoncode.com/designs/hello/latest.json"
         }
       }
   }
